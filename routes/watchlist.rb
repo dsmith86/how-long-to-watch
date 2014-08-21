@@ -7,7 +7,7 @@ class Application < Sinatra::Base
 	namespace :watchlist do
 
 		get :shows do
-			Trakt.shows_watchlist(params[:user]).to_json
+			Trakt.watchlist(params[:user], :shows).to_json
 		end
 
 	end
