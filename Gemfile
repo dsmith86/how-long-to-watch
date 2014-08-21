@@ -6,6 +6,7 @@ gem "sinatra"
 gem "data_mapper"
 gem "sinatra_more"
 gem "actionmailer"
+gem "httparty"
 
 gem "pg"
 gem "dm-postgres-adapter"
