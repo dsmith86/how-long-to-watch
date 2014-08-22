@@ -15,6 +15,7 @@ class Trakt
 	end
 
 	def self.shows_watchlist (user)
+
 		shows = get "/user/watchlist/shows.json/#{@@api_key}/#{user}"
 
 		watchlist = Array.new

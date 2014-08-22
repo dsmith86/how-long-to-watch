@@ -7,7 +7,11 @@ class Application < Sinatra::Base
 	namespace :watchlist do
 
 		get :shows do
-			Trakt.watchlist(params[:user], :shows).to_json
+			begin
+				Trakt.watchlist(params[:user], :shows).to_json
+			rescue Rack::Timeout::Error
+				{:code => 408, :error => "Request has timed out"}.to_json
+			end
 		end
 
 	end
