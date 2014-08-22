@@ -19,15 +19,44 @@ class Trakt
 
 		watchlist = Array.new
 
-		shows.each do |show|
-			show_details = Hash.new
+		shows.each do |show_details|
+			show_id = show_details['url'].sub(/^.+\//, '')
 
-			show_details[:id] = show['url'].sub(/^.+\//, '')
-			show_details[:image_url] = show['images']['poster']
+			show = Show.get(show_id)
 
-			watchlist << show_details
+			if show.nil?
+
+				show = Show.new
+
+				show[:id] = show_id
+				show[:image_uri] = show_details['images']['poster']
+				show[:episode_duration] = show_details['runtime']
+
+				show[:episode_count] = self.number_of_episodes(show_id)
+				show[:expiration_date] = DateTime.now
+
+			elsif show[:expiration_date].past?
+				puts "show is expired"
+
+				show[:episode_count] = self.number_of_episodes(show_id)
+				show[:expiration_date] = DateTime.now
+
+			end
+
+			watchlist << show
 		end
 
 		watchlist
+	end
+
+	def self.number_of_episodes(id)
+		seasons = get "/show/seasons.json/#{@@api_key}/#{id}"
+		puts "downloaded information for #{id}"
+
+		episode_count = 0
+
+		seasons.each do |season|
+			episode_count += season['episodes']
+		end
 	end
 end

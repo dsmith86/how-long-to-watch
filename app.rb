@@ -5,6 +5,7 @@ require 'net/https'
 require 'httparty'
 require 'base64'
 require 'json'
+require 'date'
 require './config/environments'
 
 class Application < Sinatra::Base
@@ -12,5 +13,6 @@ class Application < Sinatra::Base
 
 end
 
+require_relative 'helpers/init'
 require_relative 'models/init'
 require_relative 'routes/init'
