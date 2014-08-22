@@ -33,18 +33,17 @@ class Trakt
 				show[:episode_duration] = show_details['runtime']
 
 				show[:episode_count] = self.number_of_episodes(show_id)
-				show[:expiration_date] = DateTime.now
+				show[:expiration_date] = DateTime.week_from_now
 
 			elsif show[:expiration_date].past?
-				puts "show is expired"
 
 				show[:episode_count] = self.number_of_episodes(show_id)
-				show[:expiration_date] = DateTime.now
+				show[:expiration_date] = DateTime.week_from_now
 
 			end
 
 			watchlist << show
-			puts show.save
+			show.save
 		end
 
 		watchlist
@@ -52,7 +51,6 @@ class Trakt
 
 	def self.number_of_episodes(id)
 		seasons = get "/show/seasons.json/#{@@api_key}/#{id}"
-		puts "downloaded information for #{id}"
 
 		episode_count = 0
 
