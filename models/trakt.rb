@@ -44,6 +44,7 @@ class Trakt
 			end
 
 			watchlist << show
+			puts show.save
 		end
 
 		watchlist
@@ -58,5 +59,7 @@ class Trakt
 		seasons.each do |season|
 			episode_count += season['episodes']
 		end
+
+		episode_count
 	end
 end
