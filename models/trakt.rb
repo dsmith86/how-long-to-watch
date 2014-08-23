@@ -4,6 +4,7 @@ class Trakt
 	format :json
 
 	@@api_key = ENV['TRAKT_API_KEY']
+	@@connection_limit = 100
 
 	def self.watchlist (user, list_type)
 		case list_type
@@ -20,32 +21,36 @@ class Trakt
 
 		watchlist = Array.new
 
-		shows.each do |show_details|
-			show_id = show_details['url'].sub(/^.+\//, '')
+		shows.each_slice(@@connection_limit) do |show_subset|
+			
+			show_subset.each do |show_details|
+				show_id = show_details['url'].sub(/^.+\//, '')
 
-			show = Show.get(show_id)
+				show = Show.get(show_id)
 
-			if show.nil?
+				if show.nil?
 
-				show = Show.new
+					show = Show.new
 
-				show[:id] = show_id
-				show[:image_uri] = show_details['images']['poster']
-				show[:episode_duration] = show_details['runtime']
+					show[:id] = show_id
+					show[:image_uri] = show_details['images']['poster']
+					show[:episode_duration] = show_details['runtime']
 
-				show[:episode_count] = self.number_of_episodes(show_id)
-				show[:expiration_date] = DateTime.week_from_now
+					show[:episode_count] = self.number_of_episodes(show_id)
+					show[:expiration_date] = DateTime.week_from_now
 
-			elsif show[:expiration_date].past?
+				elsif show[:expiration_date].past?
 
-				show[:episode_count] = self.number_of_episodes(show_id)
-				show[:expiration_date] = DateTime.week_from_now
+					show[:episode_count] = self.number_of_episodes(show_id)
+					show[:expiration_date] = DateTime.week_from_now
 
+				end
+
+				watchlist << show
+				show.save
 			end
-
-			watchlist << show
-			show.save
 		end
+
 
 		watchlist
 	end
