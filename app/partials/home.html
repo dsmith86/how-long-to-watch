@@ -5,16 +5,16 @@
 		<form class="navbar-form navbar-left" role="search">
 			<div class="centered-controls">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Trakt username">
+					<input type="text" class="form-control" placeholder="Trakt username" ng-model="username">
 				</div>
-				<input type="submit" class="form-control btn btn-default" value="Search" />
+				<input type="submit" class="form-control btn btn-default" ng-click="searchClicked(username)" value="Search" />
 			</div>
 		</form>
 	</span>
 
 	<div class="watchlist">
 		<ul>
-			<li ng-repeat="show in tempData track by $index">
+			<li ng-repeat="show in watchlist track by $index">
 				<div class="show-item">
 					<div class="thumbnail">
 						<img ng-src="{{show.image_uri}}" />
