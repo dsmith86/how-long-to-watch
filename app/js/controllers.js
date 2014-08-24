@@ -8,7 +8,7 @@ angular.module('myApp.controllers', [])
   	$scope.username = "";
 
   	$scope.searchClicked = function(username) {
-  		Watchlist.query(function(data) {
+  		Watchlist.get({ id: username }, function(data) {
   		$scope.watchlist = data;
 
   		console.log(data);
