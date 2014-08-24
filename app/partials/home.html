@@ -1,7 +1,7 @@
 <div class="home">
 	<h1>How Long To Watch?</h1>
 
-	<div class="searchbox">
+	<span class="searchbox">
 		<form class="navbar-form navbar-left" role="search">
 			<div class="centered-controls">
 				<div class="form-group">
@@ -10,5 +10,13 @@
 				<input type="submit" class="form-control btn btn-default" value="Search" />
 			</div>
 		</form>
+	</span>
+
+	<div class="watchlist">
+		<ul>
+			<li ng-repeat="show in tempData track by $index">
+				{{show.id}}
+			</li>
+		</ul>
 	</div>
 </div>

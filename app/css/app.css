@@ -19,16 +19,27 @@ div.home h1 {
   font-family: 'Lobster', cursive;
 }
 
+.navbar-form {
+  border: 0px;
+}
+
 div.searchbox {
   position: relative;
   margin: 0 auto;
+  display: inline;
+}
+
+div.watchlist {
+  position: relative;
+  background-color: #CCCCCC;
+  margin: 0 auto;
+  width: 100%;
 }
 
 input[type="text"], input[type="submit"] {
   font-size: 2em;
   height: 100%;
   text-align: center;
-  font-family: 'Lobster', cursive;
 }
 
 @media only screen
@@ -69,12 +80,19 @@ and (min-width : 768px) {
     width: 640px;
     height: 100%;
   }
+  div.searchbox {
+    width: 640px;
+  }
   div.centered-controls {
-  position: absolute;
-  left: 125px;
-  right: 0;
-  margin: 0 auto;
-}
+    position: absolute;
+    left: 85px;
+    right: 0;
+    margin: 0 auto;
+  }
+  div.watchlist {
+    width: 600px;
+    top: 100px;
+  }
 }
 
 /* Smartphones (portrait) ----------- */
