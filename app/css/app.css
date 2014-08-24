@@ -36,6 +36,29 @@ div.watchlist {
   width: 100%;
 }
 
+div.watchlist div.show-item {
+  display: table-row;
+}
+
+div.show-item div.thumbnail {
+  float: left;
+  margin: 5px;
+}
+
+div.show-item div.details {
+  float: right;
+  margin: 5px;
+}
+
+div.watchlist li {
+  list-style-type: none;
+}
+
+div.watchlist img {
+  width: 50px;
+  float: left;
+}
+
 input[type="text"], input[type="submit"] {
   font-size: 2em;
   height: 100%;

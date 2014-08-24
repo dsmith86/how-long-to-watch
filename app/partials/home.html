@@ -15,7 +15,16 @@
 	<div class="watchlist">
 		<ul>
 			<li ng-repeat="show in tempData track by $index">
-				{{show.id}}
+				<div class="show-item">
+					<div class="thumbnail">
+						<img ng-src="{{show.image_uri}}" />
+					</div>
+
+					<div class="details">
+						<h3>{{show.id}}</h3>
+						<p><strong>Total duration: </strong>{{show.episode_duration * show.episode_count}} minutes</p>
+					</div>
+				</div>
 			</li>
 		</ul>
 	</div>
