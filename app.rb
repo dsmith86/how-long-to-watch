@@ -15,6 +15,12 @@ class Application < Sinatra::Base
 	use Rack::Timeout
 	Rack::Timeout.timeout = 10
 
+	before do
+		content_type :json    
+		headers 'Access-Control-Allow-Origin' => '*', 
+		        'Access-Control-Allow-Methods' => ['OPTIONS', 'GET', 'POST']  
+	end
+
 end
 
 require_relative 'helpers/init'
