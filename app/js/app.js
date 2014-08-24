@@ -7,12 +7,15 @@ angular.module('myApp', [
   'myApp.filters',
   'myApp.services',
   'myApp.directives',
-  'myApp.controllers'
+  'myApp.controllers',
+  'ngResource'
 ]).
 config(['$routeProvider', function($routeProvider) {
+	//delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
 	$routeProvider.when('/', {
 		templateUrl: 'app/partials/home.html',
-		controller: 'homeController'
+		controller: 'watchlistController'
 	});
 	$routeProvider.when('/404', {
 		templateUrl: 'app/partials/404.html',
