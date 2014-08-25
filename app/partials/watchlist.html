@@ -1,7 +1,7 @@
 <div class="watchlist">
 	<div ng-show="watchlist" class="sort">
-		<a ng-click="predicate = 'title'; reverse=!reverse">Title</a> |
-		<a ng-click="predicate = 'total_duration'; reverse=!reverse">Duration</a>
+		<a href="" ng-click="predicate = 'title'; reverse=!reverse" class="sortable">Title</a> |
+		<a href="" ng-click="predicate = 'total_duration'; reverse=!reverse" class="sortable">Duration</a>
 	</div>
 	<ul>
 		<li ng-repeat="show in watchlist | orderBy:predicate:reverse">
