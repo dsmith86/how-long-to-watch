@@ -12,24 +12,5 @@
 		</form>
 	</span>
 
-	<div class="watchlist">
-		<div ng-show="watchlist" class="sort">
-			<a ng-click="predicate = 'title'; reverse=!reverse">Title</a> |
-			<a ng-click="predicate = 'total_duration'; reverse=!reverse">Duration</a>
-		</div>
-		<ul>
-			<li ng-repeat="show in watchlist | orderBy:predicate:reverse">
-				<div class="show-item">
-					<div class="thumbnail">
-						<img ng-src="{{show.image_uri}}" />
-					</div>
-
-					<div class="details">
-						<h3><a ng-href="{{showUrl(show)}}" target="_blank">{{show.title}}</a></h3>
-						<p><strong>Total duration: </strong>{{formattedDuration(show)}}</p>
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div>
+	<watchlist></watchlist>
 </div>

@@ -8,4 +8,13 @@ angular.module('myApp.directives', []).
     return function(scope, elm, attrs) {
       elm.text(version);
     };
-  }]);
+  }]).
+
+  directive('watchlist', function() {
+  	return {
+  		restrict: 'E',
+  		replace: true,
+  		transclude: true,
+  		templateUrl: 'app/partials/watchlist.html'
+  	}
+  });
