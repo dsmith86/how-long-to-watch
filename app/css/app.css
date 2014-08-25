@@ -33,7 +33,9 @@ div.watchlist {
   position: relative;
   background-color: #CCCCCC;
   margin: 0 auto;
+  padding-top: 20px;
   width: 100%;
+  border-radius: 5px;
 }
 
 div.watchlist div.show-item {
@@ -57,6 +59,16 @@ div.watchlist li {
 div.watchlist img {
   width: 50px;
   float: left;
+}
+
+a.sortable {
+  background-color: #22313F;
+  padding: 5px;
+  font-size: 1.5em;
+  border-radius: 5px;
+  color: #68C3A3;
+  outline: 0;
+
 }
 
 div.sort {
