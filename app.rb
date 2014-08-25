@@ -3,7 +3,6 @@ require 'sinatra_more/routing_plugin'
 require 'net/http'
 require 'net/https'
 require 'httparty'
-require 'typhoeus'
 require 'base64'
 require 'rack-timeout'
 require 'json'
@@ -13,7 +12,7 @@ require './config/environments'
 class Application < Sinatra::Base
 	register SinatraMore::RoutingPlugin
 	use Rack::Timeout
-	Rack::Timeout.timeout = 10
+	Rack::Timeout.timeout = 20
 
 	before do
 		content_type :json    

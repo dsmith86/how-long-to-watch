@@ -8,7 +8,6 @@ gem "sinatra_more"
 gem "actionmailer"
 gem "httparty"
 gem "rack-timeout"
-gem "typhoeus"
 
 gem "pg"
 gem "dm-postgres-adapter"
