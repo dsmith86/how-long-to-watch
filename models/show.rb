@@ -2,6 +2,7 @@ class Show
 	include DataMapper::Resource
 
 	property :id, Text, :key => true
+	property :title, Text
 	property :episode_duration, Integer
 	property :episode_count, Integer
 	property :image_uri, URI

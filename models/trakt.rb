@@ -33,6 +33,7 @@ class Trakt
 					show = Show.new
 
 					show[:id] = show_id
+					show[:title] = show_details['title']
 					show[:image_uri] = show_details['images']['poster']
 					show[:episode_duration] = show_details['runtime']
 
