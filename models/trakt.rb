@@ -35,9 +35,11 @@ class Trakt
 					show[:id] = show_id
 					show[:title] = show_details['title']
 					show[:image_uri] = show_details['images']['poster']
-					show[:episode_duration] = show_details['runtime']
 
+					show[:episode_duration] = show_details['runtime']
 					show[:episode_count] = self.number_of_episodes(show_id)
+					show[:total_duration] = show[:episode_duration] * show[:episode_count]
+
 					show[:expiration_date] = DateTime.week_from_now
 
 				elsif show[:expiration_date].past?
