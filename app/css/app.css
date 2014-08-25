@@ -59,6 +59,10 @@ div.watchlist img {
   float: left;
 }
 
+div.sort {
+  text-align: center;
+}
+
 input[type="text"], input[type="submit"] {
   font-size: 2em;
   height: 100%;
